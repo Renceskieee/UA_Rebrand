@@ -1,0 +1,277 @@
+/* General Reset */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f6e599;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 2rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.stroked {
+    -webkit-text-stroke: 2px black;
+    color: transparent;
+}
+
+.highlight {
+    color: black;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+}
+
+.search-bar input {
+    padding: 5px 10px 5px 35px;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    font-size: 1rem;
+}
+
+.nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: black;
+    position: relative;
+}
+
+.nav a.active {
+    text-decoration: underline;
+}
+
+.nav a:not(:last-child)::after {
+    content: "|";
+    margin-left: 20px;
+    color: black;
+}
+
+/* General styles for the hamburger icon */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+.bar {
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    border-radius: 5px;
+}
+
+/* Mobile Navbar - Sliding effect */
+.navbar-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    background-color: white;
+    width: 150px;
+    height: 100%;
+    transition: right 0.3s ease;
+    padding-top: 60px;
+}
+
+.navbar-mobile a {
+    display: block;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+}
+
+.navbar-mobile a:hover {
+    background-color: #ddd;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 0;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.carousel-item {
+    flex: 0 0 30%;
+    transition: all 0.5s ease;
+    opacity: 0.75;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+.carousel-item.center {
+    flex: 0 0 35%;
+    opacity: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.50;
+    z-index: 10;
+}
+
+.arrow.left {
+    left: 200px;
+    transform: scaleX(-1);
+}
+
+.arrow.right {
+    right: 200px;
+}
+
+.arrow img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 1px;
+    width: 100%;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #FFDC7B;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: #FCC737;
+}
+
+/* Info Section */
+.info {
+    text-align: center;
+    padding: 20px;
+}
+
+.info h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.info p {
+    font-size: 1rem;
+    color: black;
+}
+
+/* Media Query for Mobile View (720x1600px) */
+@media screen and (max-width: 720px) {
+    .header {
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+
+    .logo span {
+        font-size: 1.5rem;
+    }
+    .search-bar {
+        display: none;
+    }
+
+    /* Hide the desktop navbar and show hamburger menu */
+    .nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .navbar-mobile.active {
+        display: block;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+    }
+
+    .nav a {
+        display: block;
+        padding: 15px;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    /* Adjust carousel layout for smaller screens */
+    .carousel {
+        flex-direction: row;
+    }
+
+    .carousel-item {
+        flex: 0 0 50%;
+        margin-bottom: 10px;
+    }
+
+    .carousel-item.center {
+        flex: 0 0 60%;
+        opacity: 1;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .arrow {
+        display: none;
+    }
+}

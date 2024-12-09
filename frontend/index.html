@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./assets/Logo.png" />
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Under Armour</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="./assets/Logo.png" alt="Logo">
+            <span>
+                <span class="stroked">UNDER</span><span class="highlight">ARMOUR</span>
+            </span>
+        </div>
+        <div class="search-bar">
+            <img src="./assets/search.png" alt="Search Icon" class="search-icon">
+            <input type="text" placeholder="Search...">
+        </div>
+        <nav class="nav">
+            <a href="#" class="active">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Contact</a>
+            <a href="#">About</a>
+        </nav>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <div class="navbar-mobile" id="navbar-mobile">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+    </div>
+
+    <main>
+        <section class="carousel">
+            <button class="arrow left">
+                <img src="./assets/arrow.png" alt="Left Arrow">
+            </button>
+            <div class="carousel-item left">
+                <img src="./assets/Product_2.png" alt="Shoe 1">
+            </div>
+            <div class="carousel-item center">
+                <img src="./assets/Main_Product.png" alt="Shoe 2">
+            </div>
+            <div class="carousel-item right">
+                <img src="./assets/Product_3.png" alt="Shoe 3">
+            </div>
+            <button class="arrow right">
+                <img src="./assets/arrow.png" alt="Right Arrow">
+            </button>
+            <div class="pagination">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+    
+        <section class="info">
+            <h2>Step into the Future</h2>
+            <p>Experience the future of footwear. Step into the next generation of style and comfort. Discover the perfect blend of innovation and elegance.</p>
+        </section>
+    </main>
+
+    <script>
+        // Function to detect swipe left on mobile
+        let startX;
+
+        const navbar = document.querySelector('.navbar-mobile');
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navbarLinks = document.querySelectorAll('.navbar-mobile a');
+
+        // Event listener for hamburger click to open navbar
+        hamburger.addEventListener('click', () => {
+            navbar.classList.add('active');
+        });
+
+        // Function to handle swipe events
+        navbar.addEventListener('touchstart', (e) => {
+            const touchStart = e.touches[0];
+            startX = touchStart.pageX;
+        });
+
+        navbar.addEventListener('touchend', (e) => {
+            const touchEnd = e.changedTouches[0];
+            const deltaX = startX - touchEnd.pageX; // Get horizontal swipe distance
+            if (deltaX > 50) { // If the swipe distance is more than 50px, it's considered a swipe left
+                navbar.classList.remove('active'); // Close the navbar
+            }
+        });
+
+        // Optional: Close the navbar when a link is clicked
+        navbarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
